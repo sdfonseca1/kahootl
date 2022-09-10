@@ -1,0 +1,19 @@
+<aside class="sidebar unit size1of4">
+    <nav class="secondary">
+        <h3>
+            Categorias
+        </h3>
+        <ul>
+            <li *ngFor="let c of categories;" class="link">
+                <a [routerLink]="['/videos', c.category_id]" (click)="getSelectedCategory( c.category_id )" class="link" title="Go to the videos in the category {{ c.category_name }}">
+                    <span class="arrow">→</span>
+                    <span class="text"> {{ c.category_name }} </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</aside>
+
+<app-intro-videos *ngIf="category_selected == 0"></app-intro-videos>
+
+<app-videos [category]="category_selected" [category_name]="category_selected_name" *ngIf="category_selected != 0"></app-videos>
